@@ -1,24 +1,35 @@
-const express = require('express')
-const app = express()
-const logger = require('./logger')
-const authorize = require('./authorize')
-//  req => middleware => res
-app.use([logger, authorize])
-// api/home/about/products
-app.get('/', (req, res) => {
-  res.send('Home')
-})
-app.get('/about', (req, res) => {
-  res.send('About')
-})
-app.get('/api/products', (req, res) => {
-  res.send('Products')
-})
-app.get('/api/items', (req, res) => {
-  console.log(req.user)
-  res.send('Items')
+const express = require('express');
+const app = express();
+const logger = require('./logger');
+const authorize = require('./authorize');
+
+//ORDRE IMPORTANT !! Si app.use vient apres about, ne sera appele qu'a partir de api/products
+//Pour charger la fonction middleware, appelez app.use() en spécifiant la fonction middleware. 
+//app.use([path,] callback [, callback...])
+
+// app.use('/api',logger);
+//ne va s'appliquer qu'aux path commencant par /api
+
+app.use([logger,authorize]);
+//vont etre executes dans l'ordre
+
+app.get('/', (req,res) => {
+    res.send('Home')
 })
 
-app.listen(5000, () => {
-  console.log('Server is listening on port 5000....')
+app.get('/about', (req, res) => {
+    res.send('About')
+})
+
+app.get('/api/products', (req, res) => {
+    res.send('Products')
+})
+
+app.get('/api/items', (req, res) => {
+    console.log(req.user)
+    res.send('Items')
+})
+
+app.listen(5000, ()=>{
+    console.log('Server is listening port 5000');
 })

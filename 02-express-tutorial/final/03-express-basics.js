@@ -1,27 +1,35 @@
-const express = require('express')
-const app = express()
+//EXPRESS
 
-app.get('/', (req, res) => {
-  console.log('user hit the resource')
-  res.status(200).send('Home Page')
+// ROUTAGE
+// Le Routage fait référence à la définition de points finaux d’application (URI) et à la façon dont ils répondent aux demandes client.
+// Une méthode de routage est dérivée de l’une des méthodes HTTP, et est liée à une instance de la classe express.
+
+const express = require('express');
+const app = express();
+
+// GET method route
+app.get('/', (req,res)=>{
+    console.log('user hit the resource');
+    res.status(200).send('Home Page')
 })
 
-app.get('/about', (req, res) => {
-  res.status(200).send('About Page')
+app.get('/about', (req,res)=>{
+    res.status(200).send('About Page')
 })
 
-app.all('*', (req, res) => {
-  res.status(404).send('<h1>resource not found</h1>')
+// ALL method route
+app.all('*',(req,res)=>{
+    res.status(404).send('<h1>resource not found</h1>')
 })
 
-app.listen(5000, () => {
-  console.log('server is listening on port 5000...')
+app.listen(5000, ()=>{
+    console.log('server is listening on port 5000');
 })
 
-// app.get
-// app.post
-// app.put
-// app.delete
-// app.all
-// app.use
-// app.listen
+//app.get
+//app.post
+//app.put
+//app.delete
+//app.all
+//app.use
+//app.listen

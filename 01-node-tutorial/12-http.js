@@ -12,14 +12,14 @@ const server = http.createServer((req,res) => {
    }
    else if(req.url === '/about'){
     res.end('Here is our short history')
-   }else{
+   }
+   else {
     res.end(`
     <h1>Oops</h1>
     <p>Don't find the page looking for</p>
     <a href="/">back home</a>
     `);
-}
-    
+}  
 })
 
 server.listen(5000)
