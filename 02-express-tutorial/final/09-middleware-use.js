@@ -3,7 +3,7 @@ const app = express();
 const logger = require('./logger');
 const authorize = require('./authorize');
 
-//ORDRE IMPORTANT !! Si app.use vient apres about, ne sera appele qu'a partir de api/products
+//ORDRE IMPORTANT !! Si app.use vient apres app.get('/about'...), ne sera appele qu'a partir de app.get('api/products',...)
 //Pour charger la fonction middleware, appelez app.use() en spécifiant la fonction middleware. 
 //app.use([path,] callback [, callback...])
 

@@ -22,12 +22,14 @@ app.get('/api/products',(req,res)=>{
 //     res.json(singleProduct)
 // })
 
+// PARAMETERS -------------------------------------
 //POUR ACCEDER A UN PRODUIT SPECIFIQUE DE MANIERE GENERALE
+
 app.get('/api/products/:productID',(req,res)=>{
     // console.log(req);
     // console.log(req.params);
     const {productID} = req.params;
-    const singleProduct = products.find((product)=> product.id === Number(productID))
+    const singleProduct = products.find((product)=> product.id === Number(productID)) // Number () car params retourne une string
     if(!singleProduct){
         return res.status(404).send('Product Does Not Exist')
     }
@@ -40,6 +42,10 @@ app.get('/api/products/:productID/reviews/:reviewID', (req,res)=>{
 
 })
 
+// QUERIES -------------------------------------
+// URL entered in browser :
+// localhost:5000/api/v1/query?name=john&id=4
+
 app.get('/api/v1/query', (req,res)=>{
     //console.log(req.query);//return {name: 'john', id: '4'}
     const {search, limit} = req.query
@@ -49,8 +55,8 @@ app.get('/api/v1/query', (req,res)=>{
         return product.name.startsWith(search)
         //La méthode startsWith() renvoie un booléen indiquant si la chaine de caractères commence par la deuxième chaine de caractères fournie en argument.
         //str.startsWith(chaîneRecherchée [, position]);
-    })
-}
+        })
+    }
     if(limit){
         sortedProducts = sortedProducts.slice(0,Number(limit))
         //La méthode slice() renvoie un objet tableau, contenant une copie superficielle (shallow copy) d'une portion du tableau d'origine, la portion est définie par un indice de début et un indice de fin (exclus). 

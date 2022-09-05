@@ -1,5 +1,8 @@
 //fs : The fs (file system) module enables interacting with the file system in a way modeled on standard POSIX functions.It can be accessed using:
 const {readFileSync, writeFileSync } = require('fs');
+// Same as :
+// const fs = require('fs);
+// fs.readFileSync()
 console.log('start');
 
 //fs.readFileSync(path[,options]) : returns the content of the path

@@ -18,6 +18,7 @@ app.get('/about', (req,res)=>{
 })
 
 // ALL method route
+//Il existe une méthode de routage spéciale, app.all(), qui n’est pas dérivée d’une méthode HTTP. Cette méthode est utilisée pour charger des fonctions middleware à un chemin d’accès pour toutes les méthodes de demande.
 app.all('*',(req,res)=>{
     res.status(404).send('<h1>resource not found</h1>')
 })

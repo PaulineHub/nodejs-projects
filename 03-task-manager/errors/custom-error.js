@@ -1,4 +1,4 @@
-//CREER UNE CLASSE D'ERRREURS
+//CREER UNE CLASSE D'ERREURS
 
 class CustomAPIError extends Error{
     constructor(message,statusCode){

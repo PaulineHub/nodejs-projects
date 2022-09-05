@@ -3,7 +3,7 @@ const path = require('path');
 
 const app = express();
 
-//setup static ans middleware
+//setup static and middleware
 
 //app.use([path,] callback [, callback...])
 //Mounts the specified middleware function or functions at the specified path: the middleware function is executed when the base of the requested path matches path.
@@ -13,7 +13,7 @@ const app = express();
 
 app.use(express.static('./public'))
 
-//The path.resolve() method resolves a sequence of paths or path segments into an absolute path.
+//The path.resolve() method from Nodes.js resolves a sequence of paths or path segments into an absolute path.
 
 app.get('/', (req,res)=>{
     res.sendFile(path.resolve(__dirname, './navbar-app/index.html'))
