@@ -1,4 +1,5 @@
 //transferer products.json dans la database
+// Enter 'node populate' in the terminal to start the transfer
 
 require('dotenv').config()
 
