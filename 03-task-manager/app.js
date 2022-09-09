@@ -12,7 +12,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler')
 //This is a built-in middleware function in Express. It serves static files and is based on serve-static.
 app.use(express.static('./public'))
 //express.json([options])
-//Permet de parser les requetes JSON qui nous arrivent en JS
+//Permet de parser les donnees JSON qui nous arrivent du body des requetes en JS
 app.use(express.json())
 
 //ROUTES
