@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs') // encrypt password
 const jwt = require('jsonwebtoken')
 
 const UserSchema = new mongoose.Schema({
@@ -25,6 +25,8 @@ const UserSchema = new mongoose.Schema({
   },
 })
 
+// Pre middleware function from Mongoose
+// before we save the document in the db, we do the folowing actions
 UserSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10)
   this.password = await bcrypt.hash(this.password, salt)
@@ -33,9 +35,9 @@ UserSchema.pre('save', async function () {
 UserSchema.methods.createJWT = function () {
   return jwt.sign(
     { userId: this._id, name: this.name },
-    process.env.JWT_SECRET,
+    process.env.JWT_SECRET, // peut etre genere avec https://www.allkeysgenerator.com/ (encryption key, 256-bits)
     {
-      expiresIn: process.env.JWT_LIFETIME,
+      expiresIn: process.env.JWT_LIFETIME, // a ajouter ds .env
     }
   )
 }

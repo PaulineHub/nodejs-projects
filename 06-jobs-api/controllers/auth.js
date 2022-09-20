@@ -14,7 +14,8 @@ const register = async (req, res) => {
   // var fusion = { ...profil, ...profilMisAJour };
   // Object { prenom: 'Sarah', nom: 'Dupont', profilComplet: true };
 
-  const user = await User.create({ ...req.body })
+  const user = await User.create({ ...req.body }) // password encrypte ds model User avec .pre middleware
+  // .createJWT() is a method from the model User
   const token = user.createJWT()
   res.status(StatusCodes.CREATED).json({ user: { name: user.name }, token })
 }
